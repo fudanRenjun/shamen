@@ -1,4 +1,4 @@
-import streamlit as st
+,import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
@@ -18,22 +18,22 @@ feature_names = [
 st.title("Predict Salmonella subtypes by integrating MALDI-TOF MS and XGBoost model")
 
 # 用户输入特征数据
-input_10975 = st.number_input("10975:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_8787 = st.number_input("8787:", min_value=0.000000001, max_value=100.0, value=10.0)
-input_5491 = st.number_input("5491:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_8463 = st.number_input("8463:", min_value=0.000000001, max_value=100.0, value=10.0)
-input_6838 = st.number_input("6838:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_16044 = st.number_input("16044:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_5374 = st.number_input("5374:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_5619 = st.number_input("5619:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_12361 = st.number_input("12361:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_2996 = st.number_input("2996:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_11642 = st.number_input("11642:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_4940 = st.number_input("4940:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_5680 = st.number_input("5680:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_2844 = st.number_input("2844:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_9864 = st.number_input("9864:", min_value=0.00000001, max_value=100.0, value=10.0)
-input_3857 = st.number_input("3857:", min_value=0.00000001, max_value=100.0, value=10.0)
+input_10975 = st.number_input("10975:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_8787 = st.number_input("8787:", min_value=0.000000001, max_value=100.0, value=10.0,format="%.8f)
+input_5491 = st.number_input("5491:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_8463 = st.number_input("8463:", min_value=0.000000001, max_value=100.0, value=10.0,format="%.8f)
+input_6838 = st.number_input("6838:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_16044 = st.number_input("16044:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_5374 = st.number_input("5374:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_5619 = st.number_input("5619:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_12361 = st.number_input("12361:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_2996 = st.number_input("2996:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_11642 = st.number_input("11642:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_4940 = st.number_input("4940:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_5680 = st.number_input("5680:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_2844 = st.number_input("2844:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_9864 = st.number_input("9864:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
+input_3857 = st.number_input("3857:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f)
 
 # 将输入的数据转化为模型的输入格式
 feature_values = [
