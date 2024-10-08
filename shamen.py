@@ -56,18 +56,6 @@ label_mapping = {
     7: "S.typhimurium"
 }
 
-# 数字标签和文本标签的映射关系
-label_mapping = {
-    0: "B",
-    1: "C1",
-    2: "C2/3",
-    3: "S.enteritidis",
-    4: "D",
-    5: "E1",
-    6: "Ptl-u",
-    7: "S.typhimurium"
-}
-
 # 当点击按钮时进行预测
 if st.button("Predict"):
     # 进行预测
@@ -77,14 +65,10 @@ if st.button("Predict"):
     # 显示预测结果
     predicted_label = label_mapping[predicted_class]
     st.write(f"**Predicted Class:** {predicted_label}")
-
-    # 显示每个类别的预测概率
-    st.write("**Prediction Probabilities:**")
-    for i, proba in enumerate(predicted_proba):
-        label = label_mapping[i]
-        st.write(f"{label}: {proba * 100:.2f}%")
+    st.write(f"**Prediction Probabilities:** {predicted_proba}")
 
     # 根据预测结果提供建议
     probability = predicted_proba[predicted_class] * 100
     advice = f"The model predicts that your probability of being in class {predicted_label} is {probability:.1f}%."
+
     st.write(advice)
