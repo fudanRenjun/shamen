@@ -65,10 +65,14 @@ if st.button("Predict"):
     # 显示预测结果
     predicted_label = label_mapping[predicted_class]
     st.write(f"**Predicted Class:** {predicted_label}")
-    st.write(f"**Prediction Probabilities:** {predicted_proba}")
+
+    # 显示每个类别的预测概率
+    st.write("**Prediction Probabilities:**")
+    for i, proba in enumerate(predicted_proba):
+        label = label_mapping[i]
+        st.write(f"{label}: {proba * 100:.2f}%")
 
     # 根据预测结果提供建议
     probability = predicted_proba[predicted_class] * 100
     advice = f"The model predicts that your probability of being in class {predicted_label} is {probability:.1f}%."
-
     st.write(advice)
