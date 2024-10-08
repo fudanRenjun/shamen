@@ -16,24 +16,25 @@ feature_names = [
 
 # Streamlit 用户界
 st.title("Predict Salmonella subtypes by integrating MALDI-TOF MS and XGBoost model")
+st.write('Please enter the following indicators to Predict:')
 
 # 用户输入特征数据
-input_10975 = st.number_input("10975:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_8787 = st.number_input("8787:", min_value=0.000000001, max_value=100.0, value=10.0,format="%.8f")
-input_5491 = st.number_input("5491:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_8463 = st.number_input("8463:", min_value=0.000000001, max_value=100.0, value=10.0,format="%.8f")
-input_6838 = st.number_input("6838:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_16044 = st.number_input("16044:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_5374 = st.number_input("5374:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_5619 = st.number_input("5619:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_12361 = st.number_input("12361:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_2996 = st.number_input("2996:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_11642 = st.number_input("11642:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_4940 = st.number_input("4940:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_5680 = st.number_input("5680:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_2844 = st.number_input("2844:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_9864 = st.number_input("9864:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
-input_3857 = st.number_input("3857:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_10975 = st.number_input("10975±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_8787 = st.number_input("8787±1:", min_value=0.000000001, max_value=100.0, value=10.0,format="%.8f")
+input_5491 = st.number_input("5491±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_8463 = st.number_input("8463±1:", min_value=0.000000001, max_value=100.0, value=10.0,format="%.8f")
+input_6838 = st.number_input("6838±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_16044 = st.number_input("16044±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_5374 = st.number_input("5374±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_5619 = st.number_input("5619±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_12361 = st.number_input("12361±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_2996 = st.number_input("2996±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_11642 = st.number_input("11642±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_4940 = st.number_input("4940±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_5680 = st.number_input("5680±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_2844 = st.number_input("2844±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_9864 = st.number_input("9864±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
+input_3857 = st.number_input("3857±1:", min_value=0.00000001, max_value=100.0, value=10.0,format="%.8f")
 
 # 将输入的数据转化为模型的输入格式
 feature_values = [
@@ -43,6 +44,30 @@ feature_values = [
 ]
 features = np.array([feature_values])
 
+# 数字标签和文本标签的映射关系
+label_mapping = {
+    0: "B",
+    1: "C1",
+    2: "C2/3",
+    3: "S.enteritidis",
+    4: "D",
+    5: "E1",
+    6: "Ptl-u",
+    7: "S.typhimurium"
+}
+
+# 数字标签和文本标签的映射关系
+label_mapping = {
+    0: "B",
+    1: "C1",
+    2: "C2/3",
+    3: "S.enteritidis",
+    4: "D",
+    5: "E1",
+    6: "Ptl-u",
+    7: "S.typhimurium"
+}
+
 # 当点击按钮时进行预测
 if st.button("Predict"):
     # 进行预测
@@ -50,11 +75,16 @@ if st.button("Predict"):
     predicted_proba = model.predict_proba(features)[0]
 
     # 显示预测结果
-    st.write(f"**Predicted Class:** {predicted_class} (0-7: 对应分类)")
-    st.write(f"**Prediction Probabilities:** {predicted_proba}")
+    predicted_label = label_mapping[predicted_class]
+    st.write(f"**Predicted Class:** {predicted_label}")
+
+    # 显示每个类别的预测概率
+    st.write("**Prediction Probabilities:**")
+    for i, proba in enumerate(predicted_proba):
+        label = label_mapping[i]
+        st.write(f"{label}: {proba * 100:.2f}%")
 
     # 根据预测结果提供建议
     probability = predicted_proba[predicted_class] * 100
-    advice = f"The model predicts that your probability of being in class {predicted_class} is {probability:.1f}%."
-
+    advice = f"The model predicts that your probability of being in class {predicted_label} is {probability:.1f}%."
     st.write(advice)
