@@ -6,7 +6,7 @@ import shap
 import matplotlib.pyplot as plt
 
 # 加载随机森林模型
-model = joblib.load('E:/RS/sm/ALL-Feature/XGBoost/final/XGBoost-16.pkl')
+model = joblib.load('XGBoost-16.pkl')
 
 # 定义特征名称（根据你的数据调整）
 feature_names = [
