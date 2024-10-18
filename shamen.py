@@ -46,14 +46,14 @@ features = np.array([feature_values])
 
 # 数字标签和文本标签的映射关系
 label_mapping = {
-    0: "B",
-    1: "C1",
-    2: "C2/3",
-    3: "S.enteritidis",
-    4: "D",
-    5: "E1",
-    6: "Ptl-u",
-    7: "S.typhimurium"
+    0: "S.Group B",
+    1: "S.Group C1",
+    2: "S.Group C2/3",
+    3: "S.enteritidis subtype",
+    4: "S.Group D",
+    5: "S.Group E1",
+    6: "Non-A-F group",
+    7: "S.typhimurium subtype"
 }
 
 # 当点击按钮时进行预测
