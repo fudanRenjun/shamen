@@ -12,7 +12,7 @@ feature_names = [
 ]
 
 # Streamlit 用户界面
-st.title("Predict Salmonella subtypes by integrating MALDI-TOF MS and XGBoost model")
+st.markdown("<h1 style='text-align: center; font-size: 12px;'>Predict Salmonella subtypes by integrating MALDI-TOF MS and XGBoost model</h1>", unsafe_allow_html=True)
 st.write('Please enter the following indicators to Predict:')
 
 # 创建四列布局
