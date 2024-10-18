@@ -15,26 +15,32 @@ feature_names = [
 st.title("Predict Salmonella subtypes by integrating MALDI-TOF MS and XGBoost model")
 st.write('Please enter the following indicators to Predict:')
 
-# 创建两列布局
-col1, col2 = st.columns(2)
+# 创建四列布局
+col1, col2, col3, col4 = st.columns(4)
 
-# 在第一列输入前八个特征
+# 在第一列输入前四个特征
 with col1:
     input_10975 = st.number_input("10975±1:", min_value=0.000000001, max_value=1.0, value=0.000200916, format="%.9f")
     input_8787 = st.number_input("8787±1:", min_value=0.0000000001, max_value=1.0, value=0.0000521, format="%.9f")
     input_5491 = st.number_input("5491±1:", min_value=0.000000001, max_value=1.0, value=0.00011864, format="%.9f")
     input_8463 = st.number_input("8463±1:", min_value=0.0000000001, max_value=1.0, value=0.000149248, format="%.9f")
+
+# 在第二列输入接下来的四个特征
+with col2:
     input_6838 = st.number_input("6838±1:", min_value=0.000000001, max_value=1.0, value=0.0000179, format="%.9f")
     input_16044 = st.number_input("16044±1:", min_value=0.000000001, max_value=1.0, value=0.0000385, format="%.9f")
     input_5374 = st.number_input("5374±1:", min_value=0.000000001, max_value=1.0, value=0.000817224, format="%.9f")
     input_5619 = st.number_input("5619±1:", min_value=0.000000001, max_value=1.0, value=0.000157866, format="%.9f")
 
-# 在第二列输入剩余八个特征
-with col2:
+# 在第三列输入下四个特征
+with col3:
     input_12361 = st.number_input("12361±1:", min_value=0.000000001, max_value=1.0, value=0.0000327, format="%.9f")
     input_2996 = st.number_input("2996±1:", min_value=0.00000001, max_value=1.0, value=0.000126849, format="%.9f")
     input_11642 = st.number_input("11642±1:", min_value=0.000000001, max_value=1.0, value=0.0000139, format="%.9f")
     input_4940 = st.number_input("4940±1:", min_value=0.000000001, max_value=1.0, value=0.00000474, format="%.9f")
+
+# 在第四列输入最后四个特征
+with col4:
     input_5680 = st.number_input("5680±1:", min_value=0.000000001, max_value=1.0, value=0.0000413, format="%.9f")
     input_2844 = st.number_input("2844±1:", min_value=0.000000001, max_value=1.0, value=0.0000326, format="%.9f")
     input_9864 = st.number_input("9864±1:", min_value=0.000000001, max_value=1.0, value=0.000000222, format="%.9f")
