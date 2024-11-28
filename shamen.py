@@ -20,25 +20,25 @@ col1, col2 = st.columns(2)
 
 # 在第一列输入前八个特征
 with col1:
-    input_10975 = st.number_input("10975±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=201, format="%d")
-    input_8787 = st.number_input("8787±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=52, format="%d")
-    input_5491 = st.number_input("5491±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=118, format="%d")
-    input_8463 = st.number_input("8463±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=149, format="%d")
-    input_6838 = st.number_input("6838±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=17, format="%d")
-    input_16044 = st.number_input("16044±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=38, format="%d")
-    input_5374 = st.number_input("5374±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=817, format="%d")
-    input_5619 = st.number_input("5619±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=158, format="%d")
+    input_10975 = st.number_input("10975±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=201, format="%d")
+    input_8787 = st.number_input("8787±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=52, format="%d")
+    input_5491 = st.number_input("5491±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=118, format="%d")
+    input_8463 = st.number_input("8463±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=149, format="%d")
+    input_6838 = st.number_input("6838±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=17, format="%d")
+    input_16044 = st.number_input("16044±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=38, format="%d")
+    input_5374 = st.number_input("5374±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=817, format="%d")
+    input_5619 = st.number_input("5619±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=158, format="%d")
 
 # 在第二列输入后八个特征
 with col2:
-    input_12361 = st.number_input("12361±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=33, format="%d")
-    input_2996 = st.number_input("2996±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=127, format="%d")
-    input_11642 = st.number_input("11642±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=14, format="%d")
-    input_4940 = st.number_input("4940±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=5, format="%d")
-    input_5680 = st.number_input("5680±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=41, format="%d")
-    input_2844 = st.number_input("2844±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=33, format="%d")
-    input_9864 = st.number_input("9864±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=0, format="%d")
-    input_3857 = st.number_input("3857±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=15, format="%d")
+    input_12361 = st.number_input("12361±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=33, format="%d")
+    input_2996 = st.number_input("2996±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=127, format="%d")
+    input_11642 = st.number_input("11642±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=14, format="%d")
+    input_4940 = st.number_input("4940±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=5, format="%d")
+    input_5680 = st.number_input("5680±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=41, format="%d")
+    input_2844 = st.number_input("2844±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=33, format="%d")
+    input_9864 = st.number_input("9864±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=0, format="%d")
+    input_3857 = st.number_input("3857±1 (×10⁻⁶):", min_value=0, max_value=1000000, value=15, format="%d")
 
 # 将输入的数据转化为实际模型需要的格式（除以10^6）
 feature_values = [
