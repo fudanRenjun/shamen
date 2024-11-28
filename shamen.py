@@ -82,5 +82,5 @@ if st.button("Predict"):
 
     # 根据预测结果提供建议
     probability = predicted_proba[predicted_class] * 100
-    advice = f"The model predicts that your probability of being in class {predicted_label} is {probability:.1f}%". 
+    advice = f"The model predicts that your probability of being in class {predicted_label} is {probability:.1f}%. Please consult a professional for further analysis."
     st.write(advice)
