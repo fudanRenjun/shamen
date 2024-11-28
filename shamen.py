@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 
-# 加载随机森林模型
+# 加载XGBoost模型
 model = joblib.load('XGBoost-16.pkl')
 
 # 定义特征名称（根据你的数据调整）
@@ -13,45 +13,42 @@ feature_names = [
 
 # Streamlit 用户界面
 st.markdown("<h1 style='text-align: center; font-size: 24px;'>Predict Salmonella subtypes by integrating MALDI-TOF MS and XGBoost model</h1>", unsafe_allow_html=True)
-st.write('Please enter the following indicators to Predict:')
+st.write('Please enter the following indicators (in units of 10⁻⁶):')
 
-# 创建四列布局
-col1, col2, col3, col4 = st.columns(4)
+# 创建两列布局
+col1, col2 = st.columns(2)
 
-# 在第一列输入前四个特征
+# 在第一列输入前八个特征
 with col1:
-    input_10975 = st.number_input("10975±1:", min_value=0.000000001, max_value=1.0, value=0.000200916, format="%.9f")
-    input_8787 = st.number_input("8787±1:", min_value=0.0000000001, max_value=1.0, value=0.0000521, format="%.9f")
-    input_5491 = st.number_input("5491±1:", min_value=0.000000001, max_value=1.0, value=0.00011864, format="%.9f")
-    input_8463 = st.number_input("8463±1:", min_value=0.0000000001, max_value=1.0, value=0.000149248, format="%.9f")
+    input_10975 = st.number_input("10975±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=201, format="%d")
+    input_8787 = st.number_input("8787±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=52, format="%d")
+    input_5491 = st.number_input("5491±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=118, format="%d")
+    input_8463 = st.number_input("8463±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=149, format="%d")
+    input_6838 = st.number_input("6838±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=17, format="%d")
+    input_16044 = st.number_input("16044±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=38, format="%d")
+    input_5374 = st.number_input("5374±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=817, format="%d")
+    input_5619 = st.number_input("5619±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=158, format="%d")
 
-# 在第二列输入接下来的四个特征
+# 在第二列输入后八个特征
 with col2:
-    input_6838 = st.number_input("6838±1:", min_value=0.000000001, max_value=1.0, value=0.0000179, format="%.9f")
-    input_16044 = st.number_input("16044±1:", min_value=0.000000001, max_value=1.0, value=0.0000385, format="%.9f")
-    input_5374 = st.number_input("5374±1:", min_value=0.000000001, max_value=1.0, value=0.000817224, format="%.9f")
-    input_5619 = st.number_input("5619±1:", min_value=0.000000001, max_value=1.0, value=0.000157866, format="%.9f")
+    input_12361 = st.number_input("12361±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=33, format="%d")
+    input_2996 = st.number_input("2996±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=127, format="%d")
+    input_11642 = st.number_input("11642±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=14, format="%d")
+    input_4940 = st.number_input("4940±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=5, format="%d")
+    input_5680 = st.number_input("5680±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=41, format="%d")
+    input_2844 = st.number_input("2844±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=33, format="%d")
+    input_9864 = st.number_input("9864±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=0, format="%d")
+    input_3857 = st.number_input("3857±1 (×10⁻⁶):", min_value=1, max_value=1000000, value=15, format="%d")
 
-# 在第三列输入下四个特征
-with col3:
-    input_12361 = st.number_input("12361±1:", min_value=0.000000001, max_value=1.0, value=0.0000327, format="%.9f")
-    input_2996 = st.number_input("2996±1:", min_value=0.00000001, max_value=1.0, value=0.000126849, format="%.9f")
-    input_11642 = st.number_input("11642±1:", min_value=0.000000001, max_value=1.0, value=0.0000139, format="%.9f")
-    input_4940 = st.number_input("4940±1:", min_value=0.000000001, max_value=1.0, value=0.00000474, format="%.9f")
-
-# 在第四列输入最后四个特征
-with col4:
-    input_5680 = st.number_input("5680±1:", min_value=0.000000001, max_value=1.0, value=0.0000413, format="%.9f")
-    input_2844 = st.number_input("2844±1:", min_value=0.000000001, max_value=1.0, value=0.0000326, format="%.9f")
-    input_9864 = st.number_input("9864±1:", min_value=0.000000001, max_value=1.0, value=0.000000222, format="%.9f")
-    input_3857 = st.number_input("3857±1:", min_value=0.000000001, max_value=1.0, value=0.0000145, format="%.9f")
-
-# 将输入的数据转化为模型的输入格式
+# 将输入的数据转化为实际模型需要的格式（除以10^6）
 feature_values = [
-    input_10975, input_8787, input_5491, input_8463, input_6838, input_16044,
-    input_5374, input_5619, input_12361, input_2996, input_11642, input_4940,
-    input_5680, input_2844, input_9864, input_3857
+    input_10975 / 1e6, input_8787 / 1e6, input_5491 / 1e6, input_8463 / 1e6,
+    input_6838 / 1e6, input_16044 / 1e6, input_5374 / 1e6, input_5619 / 1e6,
+    input_12361 / 1e6, input_2996 / 1e6, input_11642 / 1e6, input_4940 / 1e6,
+    input_5680 / 1e6, input_2844 / 1e6, input_9864 / 1e6, input_3857 / 1e6
 ]
+
+# 转换成模型的输入格式
 features = np.array([feature_values])
 
 # 数字标签和文本标签的映射关系
@@ -84,5 +81,5 @@ if st.button("Predict"):
 
     # 根据预测结果提供建议
     probability = predicted_proba[predicted_class] * 100
-    advice = f"The model predicts that your probability of being in class {predicted_label} is {probability:.1f}%."
+    advice = f"The model predicts that your probability of being in class {predicted_label} is {probability:.1f}%. Please consult a professional for further analysis."
     st.write(advice)
